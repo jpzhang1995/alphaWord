@@ -15,7 +15,7 @@ import gensim
 
 
 def similarity(word1, word2, model):
-    value = model.wv.similarity(word1, word2)
+    value = model.similarity(word1, word2)
     return value
 
 
