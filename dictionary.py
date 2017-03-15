@@ -32,14 +32,14 @@ class Dictionary(object):
         finally:
             dicFile.close( )
             
-    def query(self,suffix):
+    def query(self,prefix):
          """
          query all words with  a given prefix from a  word dictionary
 
          """
          result =[]
 
-         p1='^'+suffix+r'\S*$'
+         p1='^'+prefix+r'\S*$'
          pattern = re.compile(p1) 
          for word in self.wordList:
              if pattern.match(word):
