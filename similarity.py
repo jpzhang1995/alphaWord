@@ -19,10 +19,19 @@ def similarity(word1, word2, model):
     return value
 
 
-word1 = "action"
-word2 = "activity"
-model_google = gensim.models.Word2Vec.load_word2vec_format(
-    '../GoogleNews-vectors-negative300.bin',
-    binary=True)
-simi = similarity(word1, word2, model_google)
-print simi
+def getSimilarity(word1, word2):
+    #TODO:
+    pass
+    value=1
+    return value
+
+
+
+if __name__ == '__main__':
+    word1 = "action"
+    word2 = "activity"
+    model_google = gensim.models.Word2Vec.load_word2vec_format(
+        '../GoogleNews-vectors-negative300.bin',
+        binary=True)
+    simi = similarity(word1, word2, model_google)
+    print simi
