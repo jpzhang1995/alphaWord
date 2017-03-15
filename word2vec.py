@@ -22,7 +22,7 @@ def transform(word, model):
 
 word = "action"
 model_google = gensim.models.Word2Vec.load_word2vec_format(
-    '/Users/zhangmingjie/Documents/Github/Deep-MemNN-based-QA-Tech/model/GoogleNews-vectors-negative300.bin',
+    '../GoogleNews-vectors-negative300.bin',
     binary=True)
 vector = transform(word, model_google)
-print vector
+print vector[0]
