@@ -6,12 +6,13 @@
 # --------------------------------------------------------
 
 
-import os
-import re
-
+from dictionary import Dictionary
+from wordCluster import WordCluster
 
 
 if __name__ == '__main__':
     testDic=Dictionary('dic.txt')
-    result=testDic.query('act')
+    testCluster=WordCluster('k-means')   
+    words=testDic.query('act')
+    result=testCluster.cluster(words)
     print result

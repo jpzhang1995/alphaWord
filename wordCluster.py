@@ -40,7 +40,7 @@ class WordCluster(object):
 
          ############TEST###########
          result =[words]
-         print getSimilarity(words[0],words[1])
+         #print getSimilarity(words[0],words[1])
          pass
 
          return result
