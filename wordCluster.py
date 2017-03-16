@@ -7,7 +7,6 @@
 
 import numpy as np
 from dictionary import Dictionary
-from similarity import getSimilarity
 from sklearn.cluster import KMeans
 
 class WordCluster(object):
