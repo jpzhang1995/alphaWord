@@ -14,11 +14,14 @@ class WordCluster(object):
     """
     
     def __init__(self, mode='k-means'):
+        self.setMode(mode)
+      
+    def setMode(self, mode='k-means'):
         if mode=='k-means':
             self.mode=mode
         else:
             self.mode='error'
-      
+
             
     def cluster(self,words):
          """
@@ -44,6 +47,20 @@ class WordCluster(object):
          pass
 
          return result
+
+
+
+    def clusterBySimilaritySort(self,words):
+         """
+         cluster words by similarity sort method
+
+         """
+         #TODO:
+         result =[words]
+         pass
+         return result
+
+
 
 
 if __name__ == '__main__':

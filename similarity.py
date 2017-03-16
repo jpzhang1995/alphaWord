@@ -25,13 +25,26 @@ def getSimilarity(word1, word2):
     value=1
     return value
 
-
+def getSimilarity(words):
+    #TODO:
+    pass
+    result=[[]]
+    return result
 
 if __name__ == '__main__':
-    word1 = "action"
-    word2 = "activity"
-    model_google = gensim.models.Word2Vec.load_word2vec_format(
-        '../GoogleNews-vectors-negative300.bin',
+    words=["act","action","activity","actual","actually"]
+    print getSimilarity(words)
+    model_google = gensim.models.KeyedVectors.load_word2vec_format(
+        'GoogleNews-vectors-negative300.bin',
         binary=True)
-    simi = similarity(word1, word2, model_google)
-    print simi
+    
+    for i in words:
+        print i+' ',
+    print '\n'
+    for i in words:
+        print i,
+        for j in words:
+            print '%f'%similarity(i, j, model_google),
+        print '\n'
+
+

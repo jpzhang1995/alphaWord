@@ -8,27 +8,28 @@
 
 import os
 import re
-
+import traceback
+import cPickle as pickle  
 
 class Dictionary(object):
     """
     a dictionary
     """
     
-    def __init__(self, dicPath='dic.txt'):
+    def __init__(self, dicPath='dic.pkl'):
         self.wordList=[]
+        self.embDic={}
         if  not os.path.exists(dicPath):
-            print 'can not open '+dicPath
-            return
-        dicFile = open(dicPath,'r')      
+            print dicPath+' not exist.'
+            return            
         try:
-            for line in dicFile:
-                #print line
-                line=line.strip('\n')
-                self.wordList.append(line)              
+            dicFile = open(dicPath,'rb') 
+            obj = pickle.load(dicFile)
+            self.wordList=obj[0]
+            self.embDic=obj[1]
         except:
-            print 'can not read word list'
-            
+            print 'can not load '+dicPath
+            traceback.print_exc()     
         finally:
             dicFile.close( )
             
@@ -37,17 +38,19 @@ class Dictionary(object):
          query all words with  a given prefix from a  word dictionary
 
          """
-         result =[]
+         result =[ [ ] , [ ] ]
 
-         p1='^'+prefix+r'\S*$'
+         p1='^'+prefix+r'[a-zA-Z]*$'
          pattern = re.compile(p1) 
          for word in self.wordList:
              if pattern.match(word):
-                 result.append(word)
+                 result[0].append(word)
+                 result[1].append(self.embDic[word])
          return result
 
 
 if __name__ == '__main__':
-    testDic=Dictionary('dic.txt')
+    testDic=Dictionary('dic.pkl')
     result=testDic.query('act')
-    print result
+    print result[0]
+ #   print result[1][0]
