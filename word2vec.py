@@ -41,7 +41,7 @@ class Word2Vec(object):
                         vector = self.transform(word)
                         #print vector[0]
                         embedFile.write(word+'\n')
-                        embedDic[word]=vector[0]
+                        embedDic[word]=np.array(vector[0],dtype=np.float32)
                         wordList.append(word)
                     except:
                         print  'word '+ word+' embedding failed'
@@ -61,12 +61,11 @@ class Word2Vec(object):
 
 if __name__ == '__main__':
     w2v=Word2Vec( 'GoogleNews-vectors-negative300.bin')
-    print w2v.transform('action')
-    
-    #dicPath = 'raw.txt'
-    #embWordsPath='wordList.txt'
-    #picklePath='dic.pkl'
-    #w2v.generateDic(dicPath, embWordsPath,picklePath)
+    #print w2v.transform('action')
+    dicPath = 'raw.txt'
+    embWordsPath='wordList.txt'
+    picklePath='dic.pkl'
+    w2v.generateDic(dicPath, embWordsPath,picklePath)
     
 
 
